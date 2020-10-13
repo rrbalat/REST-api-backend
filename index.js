@@ -1,5 +1,20 @@
 const express = require('express')
+const Database = require('./manager/database')
 const app = express()
+const database = require('./manager/database')
+
+const connection = new Database({
+    host: 'localhost',
+    user: 'root',
+    password: 'rerootreroot',
+    port: 3306,
+    database: "restdb"
+})
+
+connection.query("SELECT * FROM Category", null).then(rows =>
+{
+    console.log(rows);
+})
 
 app.get('/', (req, res) =>
 {
